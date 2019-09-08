@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_list/pages/event_page.dart';
+import 'package:to_do_list/pages/task_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,9 +9,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.red,
         fontFamily: "Montserrat"
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
@@ -91,57 +94,14 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: const EdgeInsets.all(24.0),
           child: _button(context),
         ),
-        _taskuncom("Call about"),
-        _taskuncom("Fix unboarding falan filan"),
-        _taskuncom("Neredesin beee"),
-        _taskuncom("Eve git"),
-        Divider(),
-        SizedBox(
-          height: 16,
-        ),
-        _taskComplete("Call about"),
-        _taskComplete("Fix unboarding falan filan"),
+      Expanded(child: Event_Page(),)
       ],
     );
   }
 
-  Widget _taskuncom(String task) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 24.0, bottom: 18.0),
-      child: Row(
-        children: <Widget>[
-          Icon(
-            Icons.radio_button_unchecked,
-            color: Theme.of(context).accentColor,
-            size: 20,
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Text(task),
-        ],
-      ),
-    );
-  }
+ 
 
-  Widget _taskComplete(String task) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 24.0, bottom: 18.0),
-      child: Row(
-        children: <Widget>[
-          Icon(
-            Icons.radio_button_checked,
-            color: Theme.of(context).accentColor,
-            size: 20,
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Text(task),
-        ],
-      ),
-    );
-  }
+ 
 
   Widget _button(BuildContext context) {
     return Row(
