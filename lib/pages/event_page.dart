@@ -6,7 +6,7 @@ class Event_Page extends StatefulWidget {
 }
 class Event {
   final String time;
-  final String task;
+  final String task;  
   final String desc;
   final bool isFinish;
 
@@ -79,7 +79,7 @@ class IconLine extends BoxPainter{
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
     // TODO: implement paint
-    final leftOffset = Offset((iconSize / 2)+24,offset.dy);
+    final leftOffset = Offset((iconSize / 2)+24 ,offset.dy);
     final double iconSpace = iconSize/1.5;
     final Offset top = configuration.size.topLeft(Offset(leftOffset.dx,0.0));
     final Offset centerTop = configuration.size.centerLeft(Offset(leftOffset.dx,leftOffset.dy-iconSpace));

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_list/pages/add_task_page.dart';
 import 'package:to_do_list/pages/event_page.dart';
 import 'package:to_do_list/pages/task_page.dart';
+import 'package:to_do_list/widgets/custom_button.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,10 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-        fontFamily: "Montserrat"
-      ),
+      theme: ThemeData(primarySwatch: Colors.red, fontFamily: "Montserrat"),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -53,7 +52,18 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showDialog(
+              barrierDismissible: false,
+              context: context,
+              builder: (BuildContext context) {
+                return Dialog(
+                  child: add_Task_page(),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(12))),
+                );
+              });
+        },
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),
@@ -94,41 +104,32 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: const EdgeInsets.all(24.0),
           child: _button(context),
         ),
-      Expanded(child: Event_Page(),)
+        Expanded(
+          child: Event_Page(),
+        )
       ],
     );
   }
-
- 
-
- 
 
   Widget _button(BuildContext context) {
     return Row(
       children: <Widget>[
         Expanded(
-          child: MaterialButton(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-            padding: const EdgeInsets.all(14.0),
-            color: Theme.of(context).accentColor,
-            onPressed: () {},
-            child: Text("Tasks"),
-          ),
-        ),
+         child: CustomButton(
+           onPressed: (){},
+           buttonText: "Tasks",
+           color: Theme.of(context).accentColor,
+           textColor: Colors.white,
+         ),),
         SizedBox(
           width: 32,
         ),
         Expanded(
-          child: MaterialButton(
-            shape: RoundedRectangleBorder(
-                side: BorderSide(color: Theme.of(context).accentColor),
-                borderRadius: BorderRadius.circular(12)),
-            padding: const EdgeInsets.all(14.0),
-            color: Colors.white,
-            textColor: Theme.of(context).accentColor,
-            onPressed: () {},
-            child: Text("Events"),
+          child: CustomButton(
+             onPressed: () {},
+             buttonText: "Events",
+           textColor: Colors.red,
+           borderColor:Theme.of(context).accentColor ,
           ),
         ),
       ],
